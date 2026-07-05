@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jsgorana/ignition-mcp",
+  "description": "MCP server for Inductive Automation Ignition: tags, alarms, history, projects, and full Perspective deployment",
+  "repository": {
+    "url": "https://github.com/jsgorana/ignition-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "ignition-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "IGNITION_URL",
+          "description": "Gateway base URL, e.g. http://localhost:8088",
+          "isRequired": true,
+          "isSecret": false,
+          "format": "string"
+        },
+        {
+          "name": "IGNITION_API_TOKEN",
+          "description": "Ignition API key in 'name:secret' form",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "IGNITION_BRIDGE_SECRET",
+          "description": "HMAC secret shared with the mcp-bridge WebDev project; enables live tag/alarm/history/Perspective tools",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "IGNITION_ALLOW_WRITES",
+          "description": "Set to 'true' to enable mutating tools (each call still requires confirm=true)",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

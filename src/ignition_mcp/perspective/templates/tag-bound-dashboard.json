@@ -1,0 +1,108 @@
+{
+  "custom": {},
+  "params": {
+    "tagFolder": ""
+  },
+  "props": {
+    "defaultSize": {
+      "height": 600,
+      "width": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "56px"
+        },
+        "props": {
+          "text": "Live Dashboard",
+          "style": {
+            "fontSize": "22px",
+            "fontWeight": "bold"
+          }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "KpiRow"
+        },
+        "position": {
+          "basis": "140px"
+        },
+        "props": {
+          "direction": "row",
+          "justify": "space-evenly"
+        },
+        "children": [
+          {
+            "type": "ia.display.led-display",
+            "meta": {
+              "name": "Kpi1"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "auto"
+            },
+            "props": {
+              "value": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "mode": "direct",
+                    "tagPath": "[default]Demo/Value1"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.gauge",
+            "meta": {
+              "name": "Kpi2"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "auto"
+            },
+            "props": {
+              "value": 0,
+              "outerAxis": {
+                "range": {
+                  "low": 0,
+                  "high": 100
+                }
+              }
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "type": "tag",
+                  "config": {
+                    "mode": "direct",
+                    "tagPath": "[default]Demo/Value2"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

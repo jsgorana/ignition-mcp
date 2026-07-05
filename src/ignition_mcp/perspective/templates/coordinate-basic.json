@@ -1,0 +1,57 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 600,
+      "width": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StatusLabel"
+        },
+        "position": {
+          "x": 20,
+          "y": 20,
+          "width": 240,
+          "height": 32
+        },
+        "props": {
+          "text": "Status"
+        }
+      },
+      {
+        "type": "ia.display.gauge",
+        "meta": {
+          "name": "LevelGauge"
+        },
+        "position": {
+          "x": 20,
+          "y": 70,
+          "width": 260,
+          "height": 260
+        },
+        "props": {
+          "value": 42,
+          "outerAxis": {
+            "range": {
+              "low": 0,
+              "high": 100
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 600,
+      "width": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "flex-start",
+      "alignItems": "stretch"
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "48px"
+        },
+        "props": {
+          "text": "Page Title",
+          "style": {
+            "fontSize": "24px",
+            "fontWeight": "bold"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Body"
+        },
+        "position": {
+          "grow": 1,
+          "basis": "auto"
+        },
+        "props": {
+          "text": "Content goes here"
+        }
+      }
+    ]
+  }
+}
