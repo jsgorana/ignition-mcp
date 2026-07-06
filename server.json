@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.jsgorana/ignition-mcp",
-  "description": "MCP server for Inductive Automation Ignition: tags, alarms, history, projects, and full Perspective deployment",
+  "description": "MCP server for Inductive Automation Ignition: tags, alarms, history, and Perspective",
   "repository": {
     "url": "https://github.com/jsgorana/ignition-mcp",
     "source": "github"
