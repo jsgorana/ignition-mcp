@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import io
+import re
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -16,6 +17,15 @@ from ..guards import require_writes
 
 SECRET_PLACEHOLDER = "__BRIDGE_SECRET__"
 LIB_ARCNAME = "ignition/script-python/mcp_bridge_lib/code.py"
+
+# Matches only the `BRIDGE_SECRET = '__BRIDGE_SECRET__'` assignment line, not the
+# gateway-side "is this configured?" guard that also references the placeholder
+# (`if BRIDGE_SECRET == '__BRIDGE_SECRET__'`). A blind text-wide replace would
+# substitute the guard too, making it compare the secret against itself and
+# always report "not configured" even on a correct install.
+_ASSIGNMENT_RE = re.compile(
+    r"^BRIDGE_SECRET = '" + re.escape(SECRET_PLACEHOLDER) + r"'$", re.MULTILINE
+)
 
 
 def _find_bridge_zip() -> Path:
@@ -46,11 +56,14 @@ def _zip_with_secret(secret: str) -> bytes:
             data = src.read(info.filename)
             if info.filename == LIB_ARCNAME:
                 text = data.decode("utf-8")
-                if SECRET_PLACEHOLDER not in text:
+                match = _ASSIGNMENT_RE.search(text)
+                if not match:
                     raise BridgeUnavailableError(
                         "Bridge archive is missing the secret placeholder; rebuild it."
                     )
-                data = text.replace(SECRET_PLACEHOLDER, secret).encode("utf-8")
+                start, end = match.span()
+                text = text[:start] + f"BRIDGE_SECRET = {secret!r}" + text[end:]
+                data = text.encode("utf-8")
             dst.writestr(info, data)
     return out_buf.getvalue()
 
