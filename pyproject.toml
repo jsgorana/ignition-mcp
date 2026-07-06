@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ignition-mcp"
-version = "0.1.2"
+version = "0.1.3"
 description = "MCP server for Inductive Automation Ignition: tags, alarms, history, projects, and full Perspective deployment"
 readme = "README.md"
 license = "MIT"

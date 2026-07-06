@@ -79,9 +79,8 @@ Valid binding `type` values: `property`, `expression`, `tag`, `query`, `expr-str
 Expression binding example:
 
 ```json
-"binding": { "type": "expr", ... }
+"binding": { "type": "expression", "config": { "expression": "{view.params.value} * 2" } }
 ```
-— NO. The correct type string is `"expression"`, config: `{ "expression": "{view.params.value} * 2" }`.
 
 ## Checklist before deploying
 

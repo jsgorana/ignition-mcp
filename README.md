@@ -147,6 +147,8 @@ python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
 ruff check src tests          # lint
+ruff format --check src tests # format check
+mypy src                      # type check
 pytest tests/unit             # unit tests, no gateway needed
 python bridge/build_zip.py    # rebuild the bridge project archive
 
