@@ -2,16 +2,18 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.jsgorana/ignition-mcp",
   "description": "MCP server for Inductive Automation Ignition: tags, alarms, history, and Perspective",
+  "title": "Ignition MCP",
+  "websiteUrl": "https://github.com/jsgorana/ignition-mcp#readme",
   "repository": {
     "url": "https://github.com/jsgorana/ignition-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ignition-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },
